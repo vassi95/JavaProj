@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+
+</head>
+
+<body>
+	<form th:action="@{/admin/home}" method="get">
+		<button class="input" name="back" type="Submit">Back</button>
+	</form>
+
+	<table>
+		<thead class="tableHead">
+			<tr>
+				<th class='dataColumn'>Operations</th>
+				<th class='dataColumn'>First Name</th>
+				<th class='dataColumn'>Last Name</th>
+				<th class='dataColumn'>Username</th>
+				<th class='dataColumn'>Email</th>
+				<th class='dataColumn'>Roles</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${users}">
+				<td>
+					<form th:action="@{/admin/user/add}" method="post">
+						<button class="input" th:name="user" th:value="${user.username}"
+							type="Submit">Add Admin Privileges</button>
+					</form>
+					<form th:action="@{/admin/user/remove}" method="post">
+						<button class="input" th:name="user" th:value="${user.username}"
+							type="Submit">Remove Admin Privileges</button>
+					</form>
+				</td>
+				<td><span th:text="${user.firstName}"></span></td>
+				<td><span th:text="${user.lastName}"></span></td>
+				<td><span th:text="${user.username}"></span></td>
+				<td><span th:text="${user.email}"></span></td>
+				<td><span th:text="${user.roles}"></span></td>
+
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+
+	<div class="form">
+		<form th:action="@{/login}" method="POST" class="form-login">
+			<h1 class="form-signin-heading" th:text="Welcome"></h1>
+			<br /> <input type="text" id="username" name="username"
+				th:placeholder="Username" /> <br /> <input type="password"
+				th:placeholder="Password" id="password" name="password" /> <br />
+
+			<div align="center" th:if="${param.error}">
+				<p style="font-size: 20; color: #FF1C19;">Username or Password
+					invalid, please verify</p>
+			</div>
+			<button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+		</form>
+		<h2></h2>
+		<form th:action="@{/registration}" method="get">
+			<input type="Submit" value="Go To Registration Page" />
+		</form>
+	</div>
+</body>
+</html>

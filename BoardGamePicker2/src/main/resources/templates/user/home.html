@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+	<div>
+
+		<div class="form">
+			<p>
+				Logged as <span th:text="${user.username}"></span>
+			</p>
+			<form th:action="@{/user/profile}" method="get">
+				<button class="button" th:name="username"
+					th:value="${user.username}" type="Submit">Profile</button>
+			</form>
+			<h6></h6>
+			<form th:action="@{/logout}" method="get">
+				<button class="input" name="registration" type="Submit">Logout
+				</button>
+			</form>
+		</div>
+		<div class="form">
+			<form th:action="@{/user/pickrandom}" method="get">
+				<button class="button" th:name="username"
+					th:value="${user.username}" type="Submit">Pick Random Game</button>
+			</form>
+		</div>
+		<div class="form">
+			<form th:action="@{/user/filtergames}" method="get">
+				<button class="button" th:name="username"
+					th:value="${user.username}" type="Submit">Filter Games</button>
+			</form>
+		</div>
+
+
+	</div>
+</body>
+</html>

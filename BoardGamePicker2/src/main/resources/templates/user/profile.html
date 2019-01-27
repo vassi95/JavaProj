@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+	<form th:action="@{/user/home}" method="get">
+		<button class="input" name="back" type="Submit">Back</button>
+	</form>
+	<div class="form">
+		<h3>User Info</h3>
+		<p>
+			Name: <span th:text="${user.firstName}"></span> <span
+				th:text="${user.lastName}"></span>
+		</p>
+		<p>
+			Username: <span th:text="${user.username}"></span>
+		</p>
+		<p>
+			E-mail: <span th:text="${user.email}"></span>
+		</p>
+		<h1></h1>
+		<h3>Favourite Games:</h3>
+		<ol th:each="game : ${games}">
+			<li>
+				<form th:action="@{/user/game/show}" method="get">
+					<button class="input" th:name="title" th:value="${game.title}"
+						type="Submit">
+						<span th:text="${game.title}"></span>
+					</button>
+				</form>
+				<h4></h4>
+				<form th:action="@{/user/game/remove}" th:object="${user}"
+					method="post">
+					<input hidden="true" th:name="username" th:value="${user.username}" />
+					<input hidden="true" th:name="id" th:value="${user.id}" />
+					<button class="input" th:name="title" th:value="${game.title}" type="Submit">Remove
+						From Favourites</button>
+
+				</form>
+			</li>
+		</ol>
+	</div>
+</body>
+</html>

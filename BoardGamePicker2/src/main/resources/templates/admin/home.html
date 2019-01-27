@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+	<div>
+		<div class="form">
+
+			<div>
+				<span th:utext="${userName}"></span>
+			</div>
+
+			<form th:action="@{/logout}" method="get">
+				<button class="button2" name="logout" type="Submit">Logout</button>
+			</form>
+			<h6></h6>
+			<form th:action="@{/admin/game}" method="get">
+				<button class="button2" name="addgame" type="Submit">Add
+					Game</button>
+			</form>
+			<h6></h6>
+			<form th:action="@{/admin/users}" method="get">
+				<button class="button2" name="showusers" type="Submit">Show
+					Users</button>
+			</form>
+		</div>
+
+		<table>
+			<thead class="tableHead">
+				<tr>
+					<th class='dataColumn'>Operations</th>
+					<th class='dataColumn'>Image</th>
+					<th class='dataColumn'>Title</th>
+					<th class='dataColumn'>Category</th>
+					<th class='dataColumn'>Min Players</th>
+					<th class='dataColumn'>Max Players</th>
+					<th class='dataColumn'>Playing Time</th>
+					<th class='dataColumn'>Appropriate for Age</th>
+					<th class='dataColumn'>Complexity</th>
+					<th class='dataColumn'>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="game : ${gamesWithImages}">
+					<td>
+						<form th:action="@{/admin/game/edit}" method="get">
+							<button class="input" th:name="title"
+								th:value="${game.value.title}" type="Submit">Edit</button>
+						</form>
+						<form th:action="@{/admin/game/delete}" method="post">
+							<button class="input" th:name="id" th:value="${game.value.id}"
+								type="Submit">Delete</button>
+						</form>
+					</td>
+					<td><img height="300" width="300"
+						th:src="*{'data:image/png;base64,'+game.key}" /></td>
+					<td><span th:text="${game.value.title}"></span></td>
+					<td><span th:text="${game.value.category}"></span></td>
+					<td><span th:text="${game.value.minPlayers}"></span></td>
+					<td><span th:text="${game.value.maxPlayers}"></span></td>
+					<td><span th:text="${game.value.playingTime}"></span></td>
+					<td><span th:text="${game.value.appropriateForAge}"></span></td>
+					<td><span th:text="${game.value.complexity}"></span></td>
+					<td><span th:text="${game.value.description}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>

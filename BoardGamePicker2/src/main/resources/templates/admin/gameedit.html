@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+	<div class="form">
+		<form autocomplete="off" action="#" th:action="@{/admin/game/edit}"
+			th:object="${game}" enctype="multipart/form-data" method="post"
+			class="form-login">
+			<h2>Edit Game</h2>
+			<div class="form-group">
+				<div class="col-sm-9">
+					<label th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+						class="validation-message"></label>
+					<h3>Title</h3>
+					<input type="text" th:field="*{title}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('category')}"
+					th:errors="*{category}" class="validation-message"></label>
+				<h3>Category</h3>
+				<input type="text" th:field="*{category}" />
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('minPlayers')}"
+					th:errors="*{minPlayers}" class="validation-message"></label>
+				<h3>Min Players</h3>
+				<input type="number" th:field="*{minPlayers}" />
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('maxPlayers')}"
+					th:errors="*{maxPlayers}" class="validation-message"></label>
+				<h3>Max Players</h3>
+				<input type="number" th:field="*{maxPlayers}" />
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('playingTime')}"
+					th:errors="*{playingTime}" class="validation-message"></label>
+				<h3>Playing Time</h3>
+				<input type="text" th:field="*{playingTime}" />
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('appropriateForAge')}"
+					th:errors="*{appropriateForAge}" class="validation-message"></label>
+				<h3>Appropriate For Age</h3>
+				<input type="number" th:field="*{appropriateForAge}" />
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('complexity')}"
+					th:errors="*{complexity}" class="validation-message"></label>
+				<h3>Complexity</h3>
+				<input type="number" th:field="*{complexity}" />
+			</div>
+
+			<div class="form-group">
+				<label th:if="${#fields.hasErrors('description')}"
+					th:errors="*{description}" class="validation-message"></label>
+				<h3>Description</h3>
+				<textarea th:field="*{description}" cols="40" rows="10"></textarea>
+			</div>
+
+			<div class="form-group">
+				<h3>Image</h3>
+				<input type="file" name="image" th:field="*{image}"
+					accept="image/png, image/jpg" />
+			</div>
+
+			<button th:name="id" th:value="${game.id}">Validate</button>
+
+		</form>
+	</div>
+</body>
+</html>

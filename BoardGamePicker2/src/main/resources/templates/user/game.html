@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Board Game Picker</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+	<form th:action="@{/user/home}" method="get">
+		<button class="button" name="back" type="Submit">Back</button>
+	</form>
+	<div class="form">
+		<h3>Game Info</h3>
+		<p>
+			<b>Title:</b> <span th:text="${game.title}"></span>
+		</p>
+		<p>
+			<b>Category:</b> <span th:text="${game.category}"></span>
+		</p>
+		<p>
+			<b>Min Players:</b> <span th:text="${game.minPlayers}"></span>
+		</p>
+		<p>
+			<b>Max Players:</b> <span th:text="${game.maxPlayers}"></span>
+		</p>
+		<p>
+			<b>Playing Time:</b> <span th:text="${game.playingTime}"></span>
+		</p>
+		<p>
+			<b>Appropriate for Age:</b> <span th:text="${game.appropriateForAge}"></span>
+		</p>
+		<p>
+			<b>Complexity:</b> <span th:text="${game.complexity}"></span>
+		</p>
+		<p>
+			<b>Description:</b> <span th:text="${game.description}"></span>
+		</p>
+	</div>
+</body>
+</html>
